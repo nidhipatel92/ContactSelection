@@ -64,11 +64,13 @@
     NSMutableArray *arr1 = [[NSMutableArray alloc]init];
     NSMutableDictionary *dict =[[NSMutableDictionary alloc]init];
     dict[@"Title"] = @"Patel";
+    dict[@"isCheck"] = @"0";
     dict[@"Data"] = arr;
     [arr1 addObject:dict];
     
     dict =[[NSMutableDictionary alloc]init];
     dict[@"Title"] = @"Jain";
+    dict[@"isCheck"] = @"0";
     dict[@"Data"] = arr2;
     [arr1 addObject:dict];
     
@@ -108,11 +110,11 @@
     cell.contentView.backgroundColor = [UIColor redColor];
     cell.btnHeaderCheck.tag = section;
     cell.lblHeaderText.text = [[arrData objectAtIndex:section] valueForKey:@"Title"];
-    
-//    if (cell.btnHeaderCheck.isSelected)
+    NSString *str = [[arrData objectAtIndex:section]valueForKey:@"isCheck"];
+    if ([str integerValue] == 0)
         [cell.btnHeaderCheck setSelected:NO];
-//    else
-//        [cell.btnHeaderCheck setSelected:YES];
+    else
+        [cell.btnHeaderCheck setSelected:YES];
     return cell.contentView;
 }
 
@@ -158,7 +160,11 @@
     NSLog(@"%@",[arrData objectAtIndex:[sender tag]]);
     NSMutableArray *arr = [[NSMutableArray alloc]init];
     arr = [[arrData valueForKey:@"Data"]objectAtIndex:[sender tag]];
-
+    NSMutableDictionary *dict = [arrData objectAtIndex:[sender tag]];
+    if ([dict[@"isCheck"] integerValue] == 1)
+        dict[@"isCheck"] =@"0";
+    else
+        dict[@"isCheck"] =@"1";
     for (NSMutableDictionary *dict in arr)
     {
         if ([sender isSelected])
