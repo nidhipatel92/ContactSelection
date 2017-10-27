@@ -13,6 +13,7 @@
 		E06C64FF1FA33AA300088FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E06C64FE1FA33AA300088FEA /* Assets.xcassets */; };
 		E06C65021FA33AA300088FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E06C65001FA33AA300088FEA /* LaunchScreen.storyboard */; };
 		E06C65051FA33AA300088FEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C65041FA33AA300088FEA /* main.m */; };
+		E08A68EE1FA33C390069F290 /* DisplayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E08A68ED1FA33C390069F290 /* DisplayTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		E06C65011FA33AA300088FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E06C65031FA33AA300088FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E06C65041FA33AA300088FEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E08A68EC1FA33C390069F290 /* DisplayTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayTableViewCell.h; sourceTree = "<group>"; };
+		E08A68ED1FA33C390069F290 /* DisplayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				E06C65001FA33AA300088FEA /* LaunchScreen.storyboard */,
 				E06C65031FA33AA300088FEA /* Info.plist */,
 				E06C65041FA33AA300088FEA /* main.m */,
+				E08A68EC1FA33C390069F290 /* DisplayTableViewCell.h */,
+				E08A68ED1FA33C390069F290 /* DisplayTableViewCell.m */,
 			);
 			path = TableViewDemo;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			files = (
 				E06C64FA1FA33AA200088FEA /* ViewController.m in Sources */,
 				E06C65051FA33AA300088FEA /* main.m in Sources */,
+				E08A68EE1FA33C390069F290 /* DisplayTableViewCell.m in Sources */,
 				E06C64F71FA33AA200088FEA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
