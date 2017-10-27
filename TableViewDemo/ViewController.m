@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "DisplayTableViewCell.h"
+#import "HeaderTableViewCell.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -41,19 +42,23 @@
     NSMutableArray *arr = [[NSMutableArray alloc]init];
     NSMutableDictionary *dict2 =[[NSMutableDictionary alloc]init];
     dict2[@"name"] = @"Nidhi";
+    dict2[@"isCheck"] = @"0";
     [arr addObject:dict2];
     
     dict2 =[[NSMutableDictionary alloc]init];
     dict2[@"name"] = @"Dhara";
+    dict2[@"isCheck"] = @"0";
     [arr addObject:dict2];
     
     NSMutableArray *arr2 = [[NSMutableArray alloc]init];
     NSMutableDictionary *dict22 =[[NSMutableDictionary alloc]init];
     dict22[@"name"] = @"Fenali";
+    dict22[@"isCheck"] = @"0";
     [arr2 addObject:dict22];
     
     dict22 =[[NSMutableDictionary alloc]init];
     dict22[@"name"] = @"Nirali";
+    dict22[@"isCheck"] = @"0";
     [arr2 addObject:dict22];
     
     NSMutableArray *arr1 = [[NSMutableArray alloc]init];
@@ -90,26 +95,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    return 44;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *viewSection = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-    viewSection.backgroundColor = [UIColor redColor];
+    HeaderTableViewCell *cell = (HeaderTableViewCell *)[self.tblView dequeueReusableCellWithIdentifier:@"HeaderTableViewCell"];
+    if (cell == nil)
+    {
+        cell = [[HeaderTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HeaderTableViewCell"];
+    }
+    cell.contentView.backgroundColor = [UIColor redColor];
+    cell.btnHeaderCheck.tag = section;
+    cell.lblHeaderText.text = [[arrData objectAtIndex:section] valueForKey:@"Title"];
     
-    UILabel *lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 300, 30)];
-    lblTitle.text = [[arrData objectAtIndex:section] valueForKey:@"Title"];
-    [viewSection addSubview:lblTitle];
-    
-    UIButton *btnCheck = [[UIButton alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 50, 5, 30, 30)];
-    btnCheck.tag = section;
-    [btnCheck setImage:[UIImage imageNamed:@"ck_unsel"] forState:UIControlStateNormal];
-    [btnCheck addTarget:self
-                 action:@selector(myAction:)
-       forControlEvents:UIControlEventTouchUpInside];
-    [viewSection addSubview:btnCheck];
-    return viewSection;
+//    if (cell.btnHeaderCheck.isSelected)
+        [cell.btnHeaderCheck setSelected:NO];
+//    else
+//        [cell.btnHeaderCheck setSelected:YES];
+    return cell.contentView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -120,6 +124,11 @@
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone]; // style set
     cell.lblName.text = [[[[arrData valueForKey:@"Data"]objectAtIndex:indexPath.section] valueForKey:@"name"] objectAtIndex:indexPath.row];
+    NSString *str = [[[[arrData valueForKey:@"Data"]objectAtIndex:indexPath.section] valueForKey:@"isCheck"] objectAtIndex:indexPath.row];
+    if ([str integerValue] == 1)
+        [cell.btnCheck setSelected:YES];
+    else
+        [cell.btnCheck setSelected:NO];
     return cell;
 }
 
@@ -127,10 +136,73 @@
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tblView];
     NSIndexPath *indexPath = [self.tblView indexPathForRowAtPoint:buttonPosition];
     NSLog(@"%@",[[[arrData valueForKey:@"Data"]objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]);
+    NSMutableDictionary *dict = [[[arrData valueForKey:@"Data"]objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if ([dict[@"isCheck"] integerValue] == 1)
+        dict[@"isCheck"] =@"0";
+    else
+        dict[@"isCheck"] =@"1";
+    [self.tblView reloadData ];
 }
 
--(void)myAction:(id)sender
-{
+- (IBAction)btnHeaderCheckClick:(id)sender {
+    
+    if ([sender isSelected])
+    {
+        [sender setSelected:NO];
+    }
+    else
+    {
+        [sender setSelected:YES];
+    }
+    
     NSLog(@"%@",[arrData objectAtIndex:[sender tag]]);
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    arr = [[arrData valueForKey:@"Data"]objectAtIndex:[sender tag]];
+
+    for (NSMutableDictionary *dict in arr)
+    {
+        if ([sender isSelected])
+        {
+            dict[@"isCheck"] =@"1";
+        }
+        else
+        {
+            dict[@"isCheck"] =@"0";
+        }
+    }
+
+    [self.tblView reloadData ];
 }
 @end
+
+//    UIView *viewSection = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+//    viewSection.backgroundColor = [UIColor redColor];
+//
+//    UILabel *lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 300, 30)];
+//    lblTitle.text = [[arrData objectAtIndex:section] valueForKey:@"Title"];
+//    [viewSection addSubview:lblTitle];
+//
+//    UIButton *btnCheck = [[UIButton alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 50, 5, 30, 30)];
+//    btnCheck.tag = section;
+//    [btnCheck setImage:[UIImage imageNamed:@"ck_unsel"] forState:UIControlStateNormal];
+//    [btnCheck addTarget:self
+//                 action:@selector(myAction:)
+//       forControlEvents:UIControlEventTouchUpInside];
+//    [viewSection addSubview:btnCheck];
+//    return viewSection;
+
+
+//-(void)myAction:(id)sender
+//{
+//    NSLog(@"%@",[arrData objectAtIndex:[sender tag]]);
+//    NSMutableArray *arr = [[NSMutableArray alloc]init];
+//    arr = [[arrData valueForKey:@"Data"]objectAtIndex:[sender tag]];
+//
+//    for (NSMutableDictionary *dict in arr)
+//    {
+//        dict[@"isCheck"] =@"1";
+//    }
+//
+//    [self.tblView reloadData ];
+//}
+

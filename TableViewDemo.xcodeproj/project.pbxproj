@@ -14,6 +14,7 @@
 		E06C65021FA33AA300088FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E06C65001FA33AA300088FEA /* LaunchScreen.storyboard */; };
 		E06C65051FA33AA300088FEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C65041FA33AA300088FEA /* main.m */; };
 		E08A68EE1FA33C390069F290 /* DisplayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E08A68ED1FA33C390069F290 /* DisplayTableViewCell.m */; };
+		E08A68F11FA35B340069F290 /* HeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E08A68F01FA35B340069F290 /* HeaderTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		E06C65041FA33AA300088FEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E08A68EC1FA33C390069F290 /* DisplayTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayTableViewCell.h; sourceTree = "<group>"; };
 		E08A68ED1FA33C390069F290 /* DisplayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayTableViewCell.m; sourceTree = "<group>"; };
+		E08A68EF1FA35B340069F290 /* HeaderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderTableViewCell.h; sourceTree = "<group>"; };
+		E08A68F01FA35B340069F290 /* HeaderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				E06C65041FA33AA300088FEA /* main.m */,
 				E08A68EC1FA33C390069F290 /* DisplayTableViewCell.h */,
 				E08A68ED1FA33C390069F290 /* DisplayTableViewCell.m */,
+				E08A68EF1FA35B340069F290 /* HeaderTableViewCell.h */,
+				E08A68F01FA35B340069F290 /* HeaderTableViewCell.m */,
 			);
 			path = TableViewDemo;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 				E06C65051FA33AA300088FEA /* main.m in Sources */,
 				E08A68EE1FA33C390069F290 /* DisplayTableViewCell.m in Sources */,
 				E06C64F71FA33AA200088FEA /* AppDelegate.m in Sources */,
+				E08A68F11FA35B340069F290 /* HeaderTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
